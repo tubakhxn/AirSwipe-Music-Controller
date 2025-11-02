@@ -1,43 +1,73 @@
-# Gesture-controlled Local Music Player
+# 🎵 Gesture-Controlled Local Music Player
 
-This project implements a gesture-controlled music player using OpenCV and MediaPipe for hand tracking and local playback using `pygame`.
+Control your **local music playback using hand gestures** — powered by **OpenCV**, **MediaPipe**, and **pygame**.  
+Built with love and code by [@tubakhxn](https://github.com/tubakhxn) 💻🎧
 
-Features
-- Toggle Play/Pause with a fist ✊
-- Next Track with a swipe right 👉
-- Previous Track with a swipe left 👈
-- Volume control with two fingers up ✌️ (vertical position maps to volume)
-- Visual overlays: hand landmarks, current gesture text, cooldown indicator, small volume bar
-- Gesture smoothing and cooldowns to avoid accidental repeated triggers
-- Local playback using `pygame` (place audio files into `local_music/`)
+---
 
-Quick setup
-1. Create a virtualenv and install requirements:
+## 🚀 Features
+- ✊ **Fist → Toggle Play/Pause**  
+- 👉 **Swipe Right → Next Track**  
+- 👈 **Swipe Left → Previous Track**  
+- ✌️ **Two Fingers Up → Volume Control** (vertical hand position maps to volume)  
+- 🎥 Visual overlays:  
+  - Hand landmarks  
+  - Current gesture label  
+  - Cooldown indicator  
+  - Mini volume bar  
+- ⚙️ Gesture smoothing + cooldown to prevent accidental re-triggers  
+- 🎶 Local music playback using `pygame` (place songs in `local_music/`)
 
-```powershell
-python -m venv venv; .\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
+---
 
-2. Add audio files
-- Create a folder named `local_music` in the project root and copy some `.mp3`, `.wav`, or `.ogg` files there.
+## ⚙️ Quick Setup
 
-4. (Optional) System volume control — Windows only
+1. **Create a virtual environment and install dependencies:**
+   ```powershell
+   python -m venv venv; .\venv\Scripts\Activate.ps1
+   pip install -r requirements.txt
+   ```
 
-- Install `pycaw` (already in `requirements.txt`) to enable system master volume control.
-- Run the script with `--system-volume` to map the gesture volume to the Windows master volume instead of the pygame player's volume.
+2. **Add your music:**
+   - Create a folder named `local_music` in the project root.  
+   - Add `.mp3`, `.wav`, or `.ogg` files there.
 
-3. Run the script:
+3. **(Optional) System Volume Control — Windows Only**
+   - `pycaw` (included in `requirements.txt`) lets you control the **Windows master volume** directly.  
+   - Run the script with:
+     ```powershell
+     python gesture_spotify_player.py --system-volume
+     ```
+   - If not specified, volume gestures only affect the internal `pygame` playback volume.
 
-```powershell
-python gesture_spotify_player.py
-```
+4. **Run the player:**
+   ```powershell
+   python gesture_spotify_player.py
+   ```
 
-Notes and tips
-- Run locally for webcam access and low-latency controls (Colab isn't practical for live webcam gesture control).
-- If gestures misfire: tune thresholds in `gesture_spotify_player.py` (buffer lengths, swipe sensitivity).
-- If you want system-wide volume control on Windows, enable `pycaw` support (optional dependency).
+---
 
-If you'd like, I can now tune gesture sensitivity, add a small on-screen cooldown meter, or enable pycaw-based system volume control.
+## 💡 Notes & Tips
+- 🖐️ Run locally for **real-time webcam access** and **low-latency control** (Colab isn’t ideal for live gesture input).  
+- 🎯 If gestures trigger too easily, adjust thresholds in `gesture_spotify_player.py` (gesture buffer sizes, swipe distances, cooldowns).  
+- 🔊 For full system-wide volume on Windows, ensure `pycaw` is installed and use the `--system-volume` flag.
 
-Colab note: A Colab notebook `gestures_spotify_colab.ipynb` is included. Colab webcam usage is less reliable and higher-latency than a local run; use local for best results.
+---
+
+## 🧠 Colab Note
+A notebook version — `gestures_spotify_colab.ipynb` — is included for quick demos.  
+> ⚠️ Webcam performance in Colab is limited (higher latency).  
+> For the best experience, use **local execution**.
+
+---
+
+## 👤 Author & Credits
+**Project by:** [@tubakhxn](https://github.com/tubakhxn)
+
+💡 Feel free to **fork** this repo and build your own version — but please **don’t just copy and re-upload** it as your own.  
+Show support by giving the project a ⭐ and tagging **@tubakhxn** if you share it online!
+
+---
+
+## 📄 License
+**MIT License** — open to use, modify, and share with proper credit.
